@@ -1,0 +1,13 @@
+
+services:
+  artemis:
+    image: apache/activemq-artemis:latest-alpine
+    container_name: robosklad-broker
+    ports:
+      - "61616:61616"   # AMQP / Core
+      - "8161:8161"     # Web management (console)
+    volumes:
+      - ./artemis-instance:/var/lib/artemis-instance
+    environment:
+      ARTEMIS_USER: admin
+      ARTEMIS_PASSWORD: admin
